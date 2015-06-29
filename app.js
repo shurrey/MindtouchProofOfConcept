@@ -9,10 +9,13 @@ var express = require('express')
   , http = require('http')
   , path = require('path');
 
+var registerEndpoint = '/jive/register';  
+var unregisterEndpoint = '/jive/unregister'; 
+
 var app = express();
 
 // all environments
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 8080);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(express.favicon());
@@ -24,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
 if ('development' == app.get('env')) {
+  app.set('port', process.env.PORT || 8080);
   app.use(express.errorHandler());
 }
 
@@ -45,12 +49,12 @@ app.get('/contextids', routes.getContextIds);
 app.get('/contextmaps', routes.getContextMaps);  
   
 // Handle the register request  
-app.post('/'+registerEndpoint+'/', function(req, res) {  
+app.post(registerEndpoint, function(req, res) {  
   handlePayload(registerEndpoint, req, res);  
 });  
   
 // Handle the unregister request  
-app.post('/'+unregisterEndpoint+'/', function(req, res) {  
+app.post(unregisterEndpoint, function(req, res) {  
   handlePayload(unregisterEndpoint, req, res);  
 });  
 
