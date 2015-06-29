@@ -1,0 +1,16 @@
+
+.jshintrc
+
+.project
+
+.settings/.jsdtscope
+
+.settings/com.eclipsesource.jshint.ui.prefs
+
+.tern-project
+
+*.name
+
+*.container
+
+*.prefs
